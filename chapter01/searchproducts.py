@@ -38,6 +38,7 @@ for product in products:
     product.click()
     driver.implicitly_wait(2)
     time.sleep(2)
+    
 driver.implicitly_wait(20)
 
 # WebDriver will add the new opened windows to the windows list,

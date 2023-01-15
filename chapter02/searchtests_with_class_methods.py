@@ -6,17 +6,16 @@ class SearchTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         # create a new Firefox session
-        cls.driver = webdriver.Firefox()
+        cls.driver = webdriver.Chrome()
         cls.driver.implicitly_wait(30)
         cls.driver.maximize_window()
 
         # navigate to the application home page
-        cls.driver.get('http://demo-store.seleniumacademy.com/')
-        cls.driver.title
+        cls.driver.get('https://www.baidu.com/')
 
     def test_search_by_category(self):
         # get the search textbox
-        self.search_field = self.driver.find_element_by_name('q')
+        self.search_field = self.driver.find_element_by_name('wd')
         self.search_field.clear()
 
         # enter search keyword and submit
@@ -26,12 +25,12 @@ class SearchTests(unittest.TestCase):
         # get all the anchor elements which have product names displayed
         # currently on result page using find_elements_by_xpath method
         products = self.driver.\
-            find_elements_by_xpath("//h2[@class='product-name']/a")
+            find_elements_by_xpath("//div[contains(@class,'c-container') and contains(@class,'xpath-log')]//h3/a")
         self.assertEqual(3, len(products))
 
     def test_search_by_name(self):
         # get the search textbox
-        self.search_field = self.driver.find_element_by_name('q')
+        self.search_field = self.driver.find_element_by_name('wd')
         self.search_field.clear()
 
         # enter search keyword and submit
@@ -41,8 +40,8 @@ class SearchTests(unittest.TestCase):
         # get all the anchor elements which have product names displayed
         # currently on result page using find_elements_by_xpath method
         products = self.driver.\
-            find_elements_by_xpath("//h2[@class='product-name']/a")
-        self.assertEqual(1, len(products))
+            find_elements_by_xpath("//div[contains(@class,'c-container') and contains(@class,'xpath-log')]//h3/a")
+        self.assertEqual(10, len(products))
 
     @classmethod
     def tearDownClass(cls):

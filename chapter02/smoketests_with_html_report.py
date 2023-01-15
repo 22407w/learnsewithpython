@@ -12,7 +12,8 @@ search_tests = unittest.TestLoader().loadTestsFromTestCase(SearchTests)
 home_page_tests = unittest.TestLoader().loadTestsFromTestCase(HomePageTest)
 
 # create a test suite combining search_test and home_page_test
-smoke_tests = unittest.TestSuite([home_page_tests, search_tests])
+# smoke_tests = unittest.TestSuite([home_page_tests, search_tests])
+smoke_tests = unittest.TestSuite([search_tests])
 
 # open the report file
 outfile = open(result_dir + '\SmokeTestReport.html', 'w')

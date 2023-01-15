@@ -1,4 +1,4 @@
-from Tkinter import image_names
+from tkinter import image_names
 import unittest
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
@@ -8,7 +8,7 @@ class HomePageTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         # create a new Firefox session
-        cls.driver = webdriver.Firefox()
+        cls.driver = webdriver.Chrome()
         cls.driver.implicitly_wait(30)
         cls.driver.maximize_window()
 

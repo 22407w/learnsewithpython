@@ -2,23 +2,21 @@ import unittest
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
-from __builtin__ import classmethod
-
 
 class HomePageTest(unittest.TestCase):
     @classmethod
     def setUp(cls):
         # create a new Firefox session """
-        cls.driver = webdriver.Firefox()
+        cls.driver = webdriver.Chrome()
         cls.driver.implicitly_wait(30)
         cls.driver.maximize_window()
 
         # navigate to the application home page """
-        cls.driver.get('http://demo-store.seleniumacademy.com/')
+        cls.driver.get('https://www.baidu.com/')
 
     def test_search_field(self):
         # check search field exists on Home page
-        self.assertTrue(self.is_element_present(By.NAME, 'q'))
+        self.assertTrue(self.is_element_present(By.NAME, 'wd'))
 
     def test_language_option(self):
         # check language options dropdown on Home page
@@ -52,7 +50,7 @@ class HomePageTest(unittest.TestCase):
         """
         try:
             self.driver.find_element(by=how, value=what)
-        except NoSuchElementException, e:
+        except NoSuchElementException as e:
             return False
         return True
 
